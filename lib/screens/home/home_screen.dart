@@ -11,52 +11,50 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final allProducts = ref.watch(productsProvider);
     final cartProducts = ref.watch(cartNotifierProvider);
-    
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Garage Sale Products'),
+        title: const Text('Beeciye Sales'),
         actions: const [CartIcon()],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: GridView.builder(
           itemCount: allProducts.length,
-          gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 20,
-            crossAxisSpacing: 20,
-            childAspectRatio: 0.9,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 0.7,
           ),
-          itemBuilder:(context, index) {
+          itemBuilder: (context, index) {
             return Container(
-              padding: const EdgeInsets.all(20),
-              color: Colors.blueGrey.withOpacity(0.05),
-              child: Column(
-                children: [
-                  Image.asset(allProducts[index].image, width: 60, height: 60),
+                padding: const EdgeInsets.all(20),
+                color: Colors.blueGrey.withOpacity(0.05),
+                child: Column(children: [
+                  Image.asset(allProducts[index].image,
+                      width: 130, height: 130),
                   Text(allProducts[index].title),
-                  Text('£${allProducts[index].price}'),
-
+                  Text('\$${allProducts[index].price}'),
                   if (cartProducts.contains(allProducts[index]))
                     TextButton(
                       onPressed: () {
-                        ref.read(cartNotifierProvider.notifier)
-                          .removeProduct(allProducts[index]);
+                        ref
+                            .read(cartNotifierProvider.notifier)
+                            .removeProduct(allProducts[index]);
                       },
-                      child: const Text('Remove'),
+                      child: const Text('Iska Reep'),
                     ),
-
                   if (!cartProducts.contains(allProducts[index]))
                     TextButton(
                       onPressed: () {
-                        ref.read(cartNotifierProvider.notifier)
-                          .addProduct(allProducts[index]);
+                        ref
+                            .read(cartNotifierProvider.notifier)
+                            .addProduct(allProducts[index]);
                       },
-                      child: const Text('Add to Cart'),
+                      child: const Text('Xulo'),
                     ),
-                ]
-              )
-            );
+                ]));
           },
         ),
       ),
