@@ -80,6 +80,19 @@ List<Product> menShirtsProducts(ref) {
       .toList();
 }
 
+List<Product> womenTopsProducts(ref) {
+  return allProducts
+      .where((p) => p.image.contains('top')) // Filter only "top" images
+      .toList();
+}
+
+@riverpod
+List<Product> kidsProducts(ref) {
+  return allProducts
+      .where((p) => p.image.contains('kids')) // Filter images for kids
+      .toList();
+}
+
 @riverpod
 List<Product> reducedProducts(ref) {
   return allProducts.where((p) => p.price < 50).toList();

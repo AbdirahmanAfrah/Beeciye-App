@@ -33,8 +33,9 @@ final reducedProductsProvider = AutoDisposeProvider<List<Product>>.internal(
   dependencies: null,
   allTransitiveDependencies: null,
 );
-String _$menShirtsProductsHash() => r'...'; // Auto-generated hash
-
+String _$menShirtsProductsHash() => r'...';
+String _$kidsProductsHash() => r'...'; // Auto-generated hash
+String _$womenTopsProductsHash() => r'....';
 @ProviderFor(menShirtsProducts)
 final menShirtsProductsProvider = AutoDisposeProvider<List<Product>>.internal(
   menShirtsProducts,
@@ -42,6 +43,27 @@ final menShirtsProductsProvider = AutoDisposeProvider<List<Product>>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$menShirtsProductsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@ProviderFor(womenTopsProducts)
+final womenTopsProductsProvider = AutoDisposeProvider<List<Product>>.internal(
+  womenTopsProducts, // Halkan waxay ahayd mid khaldan oo hore loogu qaatay menShirtsProducts
+  name: r'womenTopsProductsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$womenTopsProductsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@ProviderFor(kidsProducts)
+final kidsProductsProvider = AutoDisposeProvider<List<Product>>.internal(
+  kidsProducts,
+  name: r'kidsProductsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$kidsProductsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

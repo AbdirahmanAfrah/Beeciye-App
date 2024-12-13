@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_files/Widgets/choosetype.dart';
 import 'package:riverpod_files/screens/defultscreen.dart';
+import 'package:riverpod_files/screens/kidsCart/kidsCartScreen.dart';
 import 'package:riverpod_files/screens/menCart/MenCarScreen.dart';
+import 'package:riverpod_files/screens/womenCart/WomenCart.dart';
 import 'package:riverpod_files/shared/cart_icon.dart';
 
 class Homescreen extends StatefulWidget {
@@ -27,6 +29,10 @@ class _HomescreenState extends State<Homescreen> {
       currentScreen = const DefualtScreen();
     } else if (activeScreen == 'Men') {
       currentScreen = const MenCarScreen();
+    } else if (activeScreen == 'Women') {
+      currentScreen = const WomenCarScreen();
+    } else if (activeScreen == 'Kids') {
+      currentScreen = const KidsCarScreen();
     } else {
       currentScreen = const Text("Screen not found!");
     }
