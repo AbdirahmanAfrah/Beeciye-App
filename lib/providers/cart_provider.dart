@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_files/models/product.dart';
+import 'package:riverpod_files/providers/products_provider.dart';
 
 part 'cart_provider.g.dart';
 
@@ -7,7 +8,6 @@ part 'cart_provider.g.dart';
 
 @riverpod
 class CartNotifier extends _$CartNotifier {
-
   @override
   Set<Product> build() {
     return {};
@@ -24,7 +24,6 @@ class CartNotifier extends _$CartNotifier {
       state = state.where((p) => p.id != product.id).toSet();
     }
   }
-
 }
 
 // Dependent provider

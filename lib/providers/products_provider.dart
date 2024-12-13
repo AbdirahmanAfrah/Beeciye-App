@@ -10,35 +10,55 @@ const List<Product> allProducts = [
       price: 12,
       image: 'assets/products/shirt1.png'),
   Product(
-      id: '2',
-      title: 'Karati Kit',
-      price: 34,
-      image: 'assets/products/shirt2.png'),
+      id: '5',
+      title: 'Drum & Sticks',
+      price: 29,
+      image: 'assets/products/top1.png'),
+  Product(
+      id: '9',
+      title: 'Electric Guitar',
+      price: 79,
+      image: 'assets/products/kids1.png'),
   Product(
       id: '3',
       title: 'Denim Jeans',
       price: 54,
       image: 'assets/products/shirt3.png'),
   Product(
-      id: '4',
-      title: 'Red Backpack',
-      price: 14,
-      image: 'assets/products/shirt4.png'),
-  Product(
-      id: '5',
-      title: 'Drum & Sticks',
-      price: 29,
-      image: 'assets/products/top1.png'),
-  Product(
       id: '6',
       title: 'Blue Suitcase',
       price: 44,
       image: 'assets/products/top2.png'),
   Product(
+      id: '2',
+      title: 'Karati Kit',
+      price: 34,
+      image: 'assets/products/shirt2.png'),
+  Product(
+      id: '12',
+      title: 'Electric Guitar',
+      price: 79,
+      image: 'assets/products/kids4.png'),
+  Product(
       id: '7',
       title: 'Roller Skates',
       price: 52,
       image: 'assets/products/top3.png'),
+  Product(
+      id: '4',
+      title: 'Red Backpack',
+      price: 14,
+      image: 'assets/products/shirt4.png'),
+  Product(
+      id: '10',
+      title: 'Electric Guitar',
+      price: 79,
+      image: 'assets/products/kids2.png'),
+  Product(
+      id: '11',
+      title: 'Electric Guitar',
+      price: 79,
+      image: 'assets/products/kids3.png'),
   Product(
       id: '8',
       title: 'Electric Guitar',
@@ -51,6 +71,13 @@ const List<Product> allProducts = [
 @riverpod
 List<Product> products(ref) {
   return allProducts;
+}
+
+@riverpod
+List<Product> menShirtsProducts(ref) {
+  return allProducts
+      .where((p) => p.image.contains('shirt')) // Filter by image name pattern
+      .toList();
 }
 
 @riverpod

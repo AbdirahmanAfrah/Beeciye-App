@@ -33,6 +33,18 @@ final reducedProductsProvider = AutoDisposeProvider<List<Product>>.internal(
   dependencies: null,
   allTransitiveDependencies: null,
 );
+String _$menShirtsProductsHash() => r'...'; // Auto-generated hash
+
+@ProviderFor(menShirtsProducts)
+final menShirtsProductsProvider = AutoDisposeProvider<List<Product>>.internal(
+  menShirtsProducts,
+  name: r'menShirtsProductsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$menShirtsProductsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef ReducedProductsRef = AutoDisposeProviderRef<List<Product>>;
 // ignore_for_file: type=lint

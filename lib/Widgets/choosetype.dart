@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 
 class Chosetypscreen extends StatefulWidget {
-  const Chosetypscreen({super.key});
+  final Function(String) onMenuSelected;
+
+  const Chosetypscreen({super.key, required this.onMenuSelected});
 
   @override
   State<Chosetypscreen> createState() => _ChosetypscreenState();
 }
 
 class _ChosetypscreenState extends State<Chosetypscreen> {
+  String selectedButton = "Home"; // Default selected button
+
+  void selectButton(String buttonName) {
+    setState(() {
+      selectedButton = buttonName; // Update the selected button
+    });
+    widget.onMenuSelected(buttonName); // Notify parent about the selection
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,33 +27,40 @@ class _ChosetypscreenState extends State<Chosetypscreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MaterialButton(
-              color: const Color.fromARGB(255, 117, 13, 13),
-              textColor: Colors.white,
-              onPressed: () {},
-              child: const Text(
-                " Home",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              )),
-          MaterialButton(
-            color: Colors.white,
-            textColor: Colors.black,
-            onPressed: () {},
-            child: const Text(" Men"),
+            color: selectedButton == "Home"
+                ? Color.fromARGB(255, 91, 2, 17) // Selected button color
+                : Colors.white, // Default color
+            textColor: selectedButton == "Home" ? Colors.white : Colors.black,
+            onPressed: () => selectButton("Home"),
+            child: const Text(
+              "Home",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           MaterialButton(
-            color: Colors.white,
-            textColor: Colors.black,
-            onPressed: () {},
-            child: const Text(" Women"),
+            color: selectedButton == "Men"
+                ? Color.fromARGB(255, 91, 2, 17)
+                : Colors.white,
+            textColor: selectedButton == "Men" ? Colors.white : Colors.black,
+            onPressed: () => selectButton("Men"),
+            child: const Text("Men"),
           ),
           MaterialButton(
-            color: Colors.white,
-            textColor: Colors.black,
-            onPressed: () {},
-            child: const Text(" Kids"),
-          )
+            color: selectedButton == "Women"
+                ? Color.fromARGB(255, 91, 2, 17)
+                : Colors.white,
+            textColor: selectedButton == "Women" ? Colors.white : Colors.black,
+            onPressed: () => selectButton("Women"),
+            child: const Text("Women"),
+          ),
+          MaterialButton(
+            color: selectedButton == "Kids"
+                ? Color.fromARGB(255, 91, 2, 17)
+                : Colors.white,
+            textColor: selectedButton == "Kids" ? Colors.white : Colors.black,
+            onPressed: () => selectButton("Kids"),
+            child: const Text("Kids"),
+          ),
         ],
       ),
     );
