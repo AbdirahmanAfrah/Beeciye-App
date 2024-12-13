@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:riverpod_files/providers/cart_provider.dart';
 import 'package:riverpod_files/providers/products_provider.dart';
+import 'package:riverpod_files/screens/productDeatil/ProductDeatilScreen.dart';
 
 class KidsCarScreen extends ConsumerWidget {
   const KidsCarScreen({super.key});
@@ -24,46 +25,61 @@ class KidsCarScreen extends ConsumerWidget {
             childAspectRatio: 0.7,
           ),
           itemBuilder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 102, 11, 11).withOpacity(0.1),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: [
-                  Image.asset(
-                    kidsProducts[index].image,
-                    width: 130,
-                    height: 130,
+            return GestureDetector(
+              onTap: () {
+                // Navigate to ProductDetailsScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductDetailsScreen(
+                      product: kidsProducts[index], // Pass product data
+                    ),
                   ),
-                  Text(kidsProducts[index].title),
-                  Text('\$${kidsProducts[index].price}'),
-                  if (cartProducts.contains(kidsProducts[index]))
-                    TextButton(
-                      onPressed: () {
-                        ref
-                            .read(cartNotifierProvider.notifier)
-                            .removeProduct(kidsProducts[index]);
-                      },
-                      child: const Text(
-                        'Remove',
-                        style: TextStyle(color: Colors.red),
-                      ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color:
+                      const Color.fromARGB(255, 102, 11, 11).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      kidsProducts[index].image,
+                      width: 130,
+                      height: 130,
                     ),
-                  if (!cartProducts.contains(kidsProducts[index]))
-                    TextButton(
-                      onPressed: () {
-                        ref
-                            .read(cartNotifierProvider.notifier)
-                            .addProduct(kidsProducts[index]);
-                      },
-                      child: const Text(
-                        'Add Cart',
-                        style: TextStyle(color: Color.fromARGB(255, 18, 76, 5)),
+                    Text(kidsProducts[index].title),
+                    Text('\$${kidsProducts[index].price}'),
+                    if (cartProducts.contains(kidsProducts[index]))
+                      TextButton(
+                        onPressed: () {
+                          ref
+                              .read(cartNotifierProvider.notifier)
+                              .removeProduct(kidsProducts[index]);
+                        },
+                        child: const Text(
+                          'Remove',
+                          style: TextStyle(color: Colors.red),
+                        ),
                       ),
-                    ),
-                ],
+                    if (!cartProducts.contains(kidsProducts[index]))
+                      TextButton(
+                        onPressed: () {
+                          ref
+                              .read(cartNotifierProvider.notifier)
+                              .addProduct(kidsProducts[index]);
+                        },
+                        child: const Text(
+                          'Add Cart',
+                          style:
+                              TextStyle(color: Color.fromARGB(255, 18, 76, 5)),
+                        ),
+                      ),
+                  ],
+                ),
               ),
             );
           },
