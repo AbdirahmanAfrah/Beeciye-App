@@ -19,7 +19,8 @@ class _CartScreenState extends ConsumerState<CartScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Cart'),
+        title: const Text('Waxaad Soxulate',
+            style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
       body: Container(
@@ -29,22 +30,19 @@ class _CartScreenState extends ConsumerState<CartScreen> {
             Column(
               children: cartProducts.map((product) {
                 return Container(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
-                  child: Row(
-                    children: [
+                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                    child: Row(children: [
                       Image.asset(product.image, width: 60, height: 60),
                       const SizedBox(width: 10),
                       Text('${product.title}...'),
                       const Expanded(child: SizedBox()),
                       Text('£${product.price}'),
-                    ]
-                  )
-                );
+                    ]));
               }).toList(),
             ),
 
             // output totals here
-            Text('Total price - £$total'),
+            Text('Total price - \$$total'),
           ],
         ),
       ),
