@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_files/screens/home/home_screen.dart';
+import 'package:riverpod_files/screens/Introduction/introductionScreen.dart';
+import 'package:riverpod_files/screens/shopnow/shopNowScreen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
       ),
-      home: const Homescreen(),
+      home: IntroScreen(),
     );
   }
 }

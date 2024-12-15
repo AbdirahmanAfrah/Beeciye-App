@@ -133,20 +133,27 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
             const SizedBox(height: 20),
 
             // Buy Now Button
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {
-                // TODO: Handle buy action
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Purchase completed!")),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 255, 158, 1),
+                backgroundColor: const Color.fromARGB(255, 255, 158, 1),
                 minimumSize: const Size(double.infinity, 50),
               ),
-              child: const Text(
-                'Buy Now',
-                style: TextStyle(fontSize: 18, color: Colors.white),
+              icon: const Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+                size: 35,
+              ),
+              label: const Text(
+                "Add Cart",
+                style: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ),
             const SizedBox(height: 20),
@@ -187,7 +194,8 @@ class _ProductDetailsScreenState extends ConsumerState<ProductDetailsScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 113, 30, 68).withOpacity(0.1),
+                      color: const Color.fromARGB(255, 113, 30, 68)
+                          .withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(

@@ -57,11 +57,13 @@ class _HomescreenState extends State<Homescreen> {
                 children: [
                   Image.asset("assets/products/sale.png",
                       width: 100, height: 100),
-                  Image.asset("assets/products/leg.png",
+                  Image.asset("assets/products/dis.png",
                       width: 100, height: 100),
-                  Image.asset("assets/products/dis.png", width: 70, height: 70),
-                  Image.asset("assets/products/top5.png",
-                      width: 100, height: 100),
+                  Image.asset("assets/products/bag.png",
+                      width: 150, height: 150),
+
+                  // Image.asset("assets/products/top5.png",
+                  //     width: 100, height: 100),
                 ],
               ),
             ),
